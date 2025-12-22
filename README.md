@@ -5,13 +5,26 @@
 
 ***
 
-## Dataset features
+## Introduction
 
-### 1) Over 6.74M+ unique, de-duped and normalized MIDIs
-### 2) Each MIDI was converted to proper MIDI format specification and checked for integrity
-### 3) Dataset was de-duped twice: by md5 hashes and by the pitches-chords counts
-### 4) Extensive and comprehensive (meta)data was collected from all MIDIs in the dataset
-### 5) Dataset comes with a custom-designed and highly optimized GPU-accelerated search and filter code
+### Bright, fast, and built for discovery — the **Discover MIDI Dataset** is a massive, carefully curated collection of symbolic music designed for music information retrieval (MIR), creative exploration, and training symbolic music AI. It contains **over 6.74M unique, de‑duplicated, and normalized MIDI files**, comprehensive metadata, and GPU‑accelerated search tooling so researchers and creators can find, analyze, and prototype with MIDI at production scale.
+
+### Overview
+
+- **Purpose:** Large‑scale symbolic dataset for MIR, retrieval, analysis, and generative model development.  
+- **Scale:** 6.74M+ unique MIDIs, each converted to a proper MIDI specification and integrity‑checked.  
+- **Quality controls:** Two‑stage de‑duplication (MD5 and pitch/chord counts) and extensive quality metrics.  
+- **Tooling:** Precomputed features, compressed features matrixes, and a custom GPU‑accelerated search and filter codebase.
+
+### Key features
+
+- **Massive, de‑duplicated collection** — over **6.74M** normalized MIDIs with integrity checks.  
+- **Two‑stage de‑duping** — MD5 hash deduplication followed by pitch/chord counts deduplication.  
+- **Rich metadata** — features counts, features matrixes, file lists, genre mappings, identified artist/title, karaoke and lyrics matches, mono‑melody info, pitches‑patches counts, and quality metrics.  
+- **Precomputed features** — features span indices \([0,1089)\) grouped into delta start times, durations, instruments/patches, pitches, harmonic chords (321 chords), and velocities; matrixes exclude velocities and are stored as compressed NumPy arrays (961 features).  
+- **High‑performance search** — GPU‑accelerated search and filter code optimized for float16; full searches typically take **10–20 seconds per master MIDI** on a capable GPU (recommended **≥16 GB VRAM**).  
+- **Convenience files** — curated file lists (md5 → full path) and many subsets for easy retrieval and batch processing.  
+- **Supplemental code** — MIDI loops extractor, rendering helpers, and optional modules to speed extraction and audio rendering.
 
 ***
 
