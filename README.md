@@ -99,16 +99,16 @@ _The dataset is packaged with clear installation and optional dependency instruc
 ## Quick-start use example
 
 ```python
-# Import main Godzilla MIDI Dataset module
+# Import main Discover MIDI Dataset module
 import discovermidi
 
-# Download Godzilla MIDI Dataset from Hugging Face repo
+# Download Discover MIDI Dataset from Hugging Face repo
 discovermidi.download_dataset()
 
-# Extract Godzilla MIDI Dataset with built-in function (slow)
+# Extract Discover MIDI Dataset with built-in function (slow)
 discovermidi.parallel_extract()
 
-# Or you can extract much faster if you have installed the optional packages for Fast Parallel Extract module
+# Or you can extract much faster if you have installed the optional packages for fast_parallel_extract module
 # from discovermidi import fast_parallel_extract
 # fast_parallel_extract.fast_parallel_extract()
 
