@@ -9,6 +9,16 @@
 
 #### Bright, fast, and built for discovery — the **Discover MIDI Dataset** is a massive, carefully curated collection of symbolic music designed for music information retrieval (MIR), creative exploration, and training symbolic music AI. It contains **over 6.74M unique, de‑duplicated, and normalized MIDI files**, comprehensive metadata, and GPU‑accelerated search tooling so researchers and creators can find, analyze, and prototype with MIDI at production scale.
 
+### Abstract
+
+_The **Discover MIDI Dataset** is a large‑scale, production‑ready collection of symbolic music designed for music information retrieval, discovery, and symbolic music AI. It aggregates **over 6.74 million** unique, de‑duplicated, and normalized MIDI files, each validated against the MIDI specification and integrity‑checked to ensure consistent, high‑quality inputs for analysis and model development. The dataset emphasizes reproducibility and efficiency by applying a two‑stage de‑duplication pipeline (MD5 hashing and pitch/chord count comparison) and by providing extensive, precomputed metadata and feature representations for every file._
+
+_The dataset supplies **rich, structured metadata** including feature counts, compressed features matrixes (961 features excluding velocities), file lists, genre labels, artist/title identifications, karaoke and lyrics matches, monophonic melody summaries, pitches‑patches counts, and detailed quality metrics for alignment, chords, durations, and pitches. Features span a unified index range covering delta start times, durations, instruments/patches, instrument and drum pitches, a 321‑chord harmonic vocabulary, and velocities, enabling consistent statistical analysis, de‑duplication, and retrieval tasks across millions of files._
+
+_To accelerate discovery workflows, Discover MIDI includes a **GPU‑accelerated search and filter engine** optimized for float16 performance; on suitable hardware (recommended ≥16 GB GPU VRAM) full‑dataset similarity searches complete in the order of **10–20 seconds per master MIDI**. The distribution also bundles supplemental code—such as a MIDI loops extractor—and curated soundfont banks to support rendering, loop extraction, and downstream experimentation. Convenience artifacts like MD5→path file lists and curated subsets make large‑scale batch processing and targeted retrieval straightforward._
+
+_The dataset is packaged with clear installation and optional dependency instructions for CPU and GPU environments, plus modules to speed parallel extraction and audio rendering. Its combination of scale, rigorous de‑duplication, precomputed features, and high‑performance tooling makes Discover MIDI suitable for a wide range of use cases: training and evaluating symbolic music models, large‑scale MIR research, motif and loop discovery for creators, and building retrieval or recommendation systems with minimal preprocessing overhead._
+
 ### Overview
 
 - **Purpose:** Large‑scale symbolic dataset for MIR, retrieval, analysis, and generative model development.  
