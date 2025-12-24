@@ -1,10 +1,10 @@
 [build-system]
-requires = ["setuptools>=80.0.0", "wheel"]
+requires = ["setuptools>=80.9.0", "wheel", "build"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "discovermidi"
-version = "25.12.23"
+version = "25.12.41"
 description = "Ultimate MIDI dataset for MIDI music discovery and symbolic music AI purposes"
 license = "Apache-2.0"
 license-files = ["LICENSE"]
@@ -17,28 +17,69 @@ maintainers = [
 dependencies = [
   "tqdm",
   "ipywidgets",
+  "scikit-learn",
+  "scipy",
   "matplotlib",
-  "numpy==1.24.4",
   "hf-transfer",
   "huggingface_hub",
   "torch",
-  "midirenderer"
+  "midirenderer",
+  "mididoctor",
+  "numpy==1.24.4"
 ]
-keywords = ["MIDI", "music", "music AI", "MIDI dataset", "music dataset", "MIR", "music discovery", "music search", "MIDI search"]
+
+keywords = [
+  "MIDI",
+  "MIDI dataset",
+  "MIDI processing",
+  "symbolic music",
+  "symbolic dataset",
+  "music",
+  "music AI",
+  "music dataset",
+  "music information retrieval",
+  "MIR",
+  "music discovery",
+  "music search",
+  "music similarity",
+  "music metadata",
+  "music generation",
+  "music recommendation",
+  "dataset",
+  "open dataset",
+  "research",
+  "deep learning",
+  "machine learning",
+  "AI",
+  "huggingface datasets",
+  "musicology",
+  "music analysis",
+]
+
 classifiers = [
   "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Developers",
   "Intended Audience :: Science/Research",
-  "Topic :: Multimedia :: Sound/Audio :: MIDI",
+  "Intended Audience :: Education",
   "Operating System :: OS Independent",
-  "Programming Language :: Python :: 3.6",
-  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
   "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
-  "Programming Language :: Python :: 3.12"
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Multimedia :: Sound/Audio",
+  "Topic :: Multimedia :: Sound/Audio :: MIDI",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Topic :: Scientific/Engineering :: Information Analysis",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+  "Environment :: Console",
+  "Natural Language :: English",
+  "Typing :: Typed"
 ]
-requires-python = ">=3.6"
+
+requires-python = ">=3.8"
 
 [project.readme]
 file = "discovermidi/README.md"
@@ -51,3 +92,25 @@ Documentation = "https://github.com/asigalov61/discovermidi"
 Issues = "https://github.com/asigalov61/discovermidi/issues"
 Discussions = "https://github.com/asigalov61/discovermidi/discussions"
 Dataset = "https://huggingface.co/datasets/projectlosangeles/Discover-MIDI-Dataset"
+
+[project.optional-dependencies]
+loops = [
+  "pretty-midi",
+  "symusic",
+  "miditok",
+  "numba",
+  "numpy==1.24.4"
+]
+
+full = [
+  "pretty-midi",
+  "symusic",
+  "miditok",
+  "numba",
+  "networkx",
+  "cupy-cuda13x",
+  "einops",
+  "einx",
+  "nltk",
+  "numpy==1.24.4"
+]
