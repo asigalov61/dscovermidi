@@ -106,8 +106,6 @@ import random
 
 import json
 
-import pickle
-
 from collections import Counter, OrderedDict, defaultdict
 
 from itertools import combinations
@@ -132,10 +130,6 @@ from huggingface_hub import hf_hub_download
 from typing import Tuple, Optional, Iterable, Union, Sequence, List
 
 import tqdm
-
-import hashlib
-
-import weakref
 
 ###################################################################################
 ###################################################################################
@@ -2801,6 +2795,7 @@ def search_and_filter(features_matrixes,
         
         if verbose:
             print('Computing mean/std...')
+
         mean, std = fast_mean_std_gpu((features_matrixes.astype(np.float32),
                                        src_fmatrixes.astype(np.float32)
                                       ),
@@ -2809,6 +2804,7 @@ def search_and_filter(features_matrixes,
                                       use_gpu=use_gpu,
                                       verbose=verbose
                                      )
+
         if verbose:    
             print('Calculating distances...')
         
@@ -2842,30 +2838,37 @@ def search_and_filter(features_matrixes,
         if include_master_midis:
             shutil.copy2(midi, os.path.join(midi_output_dir, inp_fn))
 
+            
+
+        flat_inds = [x for row in inds.tolist() for x in row]
+        flat_scores = [x for row in scores.tolist() for x in row]
+        flat_tvs = [v for v in range(tsidx, teidx) for _ in range(max_number_of_top_k_matches)]
+
+        zipped_ist = sorted(zip(flat_inds, flat_scores, flat_tvs), key=lambda x: x[1])
+        
         seen = set()
             
-        for idxs, scos, tv in zip(inds.tolist(), scores.tolist(), range(tsidx, teidx)):
-        
-            for i, s in zip(idxs, scos):
-        
-                try:
-                    md5 = features_matrixes_file_names[i]
-                    fn = md5 + '.mid'
-                    sim = round(s * 100, 8)
+        for idx, sim, tv in zipped_ist:
 
-                    if md5 not in seen:
+            try:
+                md5 = features_matrixes_file_names[idx]
+                fn = md5 + '.mid'
+                sim = round(sim * 100, 8)
 
-                        shutil.copy2(discover_dir + fn[0] + '/' + fn[1] + '/' + fn, midi_output_dir + '/' + str(sim) + '_' + str(tv) + '_' + fn)
-                        seen.add(md5)
-        
-                except Exception as ex:
-                    if verbose:
-                        print('=' * 70)
-                        print('Exception error!!!')
-                        print(ex)
-                        print('File name:', fn)
-                        
-                        continue
+                if md5 not in seen:
+
+                    shutil.copy2(discover_dir + fn[0] + '/' + fn[1] + '/' + fn, midi_output_dir + '/' + str(sim) + '_' + str(tv) + '_' + fn)
+                    seen.add(md5)
+    
+            except Exception as ex:
+                if verbose:
+                    print('=' * 70)
+                    print('Exception error!!!')
+                    print(ex)
+                    print('File name:', fn)
+                    
+                    continue
+                    
         if verbose:
             print('=' * 70)
 
@@ -2897,7 +2900,7 @@ def search_and_filter(features_matrixes,
         print("=" * 70)
         print("Done!")
         print("=" * 70)
-   
+        
 ###################################################################################
 
 def align_feature_vectors(
