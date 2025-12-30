@@ -75,7 +75,7 @@ _The dataset is packaged with clear installation and optional dependency instruc
 !pip install torch
 !pip install midirenderer
 !pip install mididoctor
-!pip install numpy==1.24.4
+!pip install numpy==1.26.4
 ```
 
 ```sh
@@ -131,7 +131,7 @@ _The dataset is packaged with clear installation and optional dependency instruc
 !pip install symusic
 !pip install miditok
 !pip install numba
-!pip install numpy==1.24.4
+!pip install numpy==1.26.4
 ```
 
 ***
